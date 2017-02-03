@@ -50,7 +50,7 @@ app.get('/restaurants/:id', (req, res) => {
     .then(restaurant =>res.json(restaurant.apiRepr()))
     .catch(err => {
       console.error(err);
-        res.status(500).json({message: 'Internal server error'})
+        res.status(500).json({message: 'Internal server error'});
     });
 });
 
@@ -61,7 +61,7 @@ app.post('/restaurants', (req, res) => {
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
     if (!(field in req.body)) {
-      const message = `Missing \`${field}\` in request body`
+      const message = `Missing \`${field}\` in request body`;
       console.error(message);
       return res.status(400).send(message);
     }
@@ -171,6 +171,6 @@ function closeServer() {
 // runs. but we also export the runServer command so other code (for instance, test code) can start the server as needed.
 if (require.main === module) {
   runServer().catch(err => console.error(err));
-};
+}
 
 module.exports = {app, runServer, closeServer};
